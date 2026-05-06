@@ -1,5 +1,5 @@
 import XCTest
-@testable import SwiftUtils
+@testable import SwiftUtilsExtensions
 
 final class StringExtensionsTests: XCTestCase {
     

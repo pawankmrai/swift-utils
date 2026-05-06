@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import SwiftUtils
+@testable import SwiftUtilsConcurrency
 
 // MARK: - Debouncer Tests
 

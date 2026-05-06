@@ -1,5 +1,5 @@
 import XCTest
-@testable import SwiftUtils
+@testable import SwiftUtilsStorage
 
 final class UserDefaultsWrapperTests: XCTestCase {
 
