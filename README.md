@@ -4,27 +4,33 @@ A growing collection of reusable Swift utilities for iOS development. A new util
 
 ## Latest Addition
 
-### SwiftLogger (Helpers)
+### KeychainWrapper (Storage)
 
-A lightweight, structured logging utility with configurable levels and pluggable destinations.
+A type-safe wrapper around the iOS Keychain Services API for securely storing sensitive data like tokens, passwords, and credentials.
 
 ```swift
-import SwiftUtilsHelpers
+import SwiftUtilsStorage
 
-// Use the shared instance
-SwiftLogger.shared.info("App launched")
-SwiftLogger.shared.error("Request failed", category: "API")
+let keychain = KeychainWrapper(service: "com.myapp")
 
-// Or create a custom logger
-let log = SwiftLogger(minimumLevel: .warning, destinations: [ConsoleDestination()])
-log.warning("Disk space low", category: "Storage")
+// Store and retrieve strings
+try keychain.set("my-secret-token", forKey: "authToken")
+let token = try keychain.string(forKey: "authToken") // "my-secret-token"
 
-// Build custom destinations
-struct AnalyticsDestination: LogDestination {
-    func write(_ entry: LogEntry) {
-        // Send to your analytics service
-    }
+// Store Codable objects as JSON
+struct Credentials: Codable {
+    let username: String
+    let apiKey: String
 }
+
+let creds = Credentials(username: "pawan", apiKey: "sk-12345")
+try keychain.setCodable(creds, forKey: "credentials")
+let restored: Credentials? = try keychain.codable(forKey: "credentials")
+
+// Check existence and clean up
+try keychain.contains("authToken")  // true
+try keychain.remove(forKey: "authToken")
+try keychain.removeAll()
 ```
 
 ---
@@ -43,7 +49,7 @@ Each utility is an independent library — import only what you need:
 |---------|--------|---------------|
 | `SwiftUtilsExtensions` | `import SwiftUtilsExtensions` | String, Date extensions |
 | `SwiftUtilsNetworking` | `import SwiftUtilsNetworking` | APIClient, request/response helpers |
-| `SwiftUtilsStorage` | `import SwiftUtilsStorage` | UserDefaults property wrapper |
+| `SwiftUtilsStorage` | `import SwiftUtilsStorage` | UserDefaults property wrapper, Keychain wrapper |
 | `SwiftUtilsConcurrency` | `import SwiftUtilsConcurrency` | Debouncer, Throttler, async helpers |
 | `SwiftUtilsHelpers` | `import SwiftUtilsHelpers` | Logger with pluggable destinations |
 | `SwiftUtils` | `import SwiftUtils` | Everything (umbrella) |
@@ -60,7 +66,7 @@ dependencies: [
     name: "MyApp",
     dependencies: [
         .product(name: "SwiftUtilsNetworking", package: "swift-utils"),
-        .product(name: "SwiftUtilsHelpers", package: "swift-utils"),
+        .product(name: "SwiftUtilsStorage", package: "swift-utils"),
     ]
 )
 ```
@@ -80,6 +86,8 @@ dependencies: [
 ### Storage
 
 **UserDefaultsWrapper** — A `@propertyWrapper` for type-safe UserDefaults access. Supports default values, optional types, and custom suites. Drop it on a static property and read/write UserDefaults without string-key typos.
+
+**KeychainWrapper** — A type-safe wrapper around the iOS Keychain Services API. Securely store, retrieve, and delete strings, raw `Data`, or any `Codable` type. Supports configurable accessibility levels (`whenUnlocked`, `afterFirstUnlock`) and optional access groups for sharing items across apps.
 
 ### Concurrency
 
