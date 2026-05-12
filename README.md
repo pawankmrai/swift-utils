@@ -4,33 +4,35 @@ A growing collection of reusable Swift utilities for iOS development. A new util
 
 ## Latest Addition
 
-### KeychainWrapper (Storage)
+### Validator (Helpers)
 
-A type-safe wrapper around the iOS Keychain Services API for securely storing sensitive data like tokens, passwords, and credentials.
+A composable, type-safe input validation framework. Chain multiple rules to validate form fields, API parameters, or any user input — collect all errors at once or short-circuit on the first failure.
 
 ```swift
-import SwiftUtilsStorage
+import SwiftUtilsHelpers
 
-let keychain = KeychainWrapper(service: "com.myapp")
+// Build a reusable email validator
+let emailValidator = Validator<String>()
+    .adding(.nonEmpty(message: "Email is required"))
+    .adding(.email())
 
-// Store and retrieve strings
-try keychain.set("my-secret-token", forKey: "authToken")
-let token = try keychain.string(forKey: "authToken") // "my-secret-token"
+emailValidator.isValid("user@example.com")  // true
+emailValidator.errors(for: "bad")           // ["Must be a valid email address"]
 
-// Store Codable objects as JSON
-struct Credentials: Codable {
-    let username: String
-    let apiKey: String
-}
+// Password strength check
+let passwordValidator = Validator<String>()
+    .adding(.minLength(8))
+    .adding(.strongPassword())
 
-let creds = Credentials(username: "pawan", apiKey: "sk-12345")
-try keychain.setCodable(creds, forKey: "credentials")
-let restored: Credentials? = try keychain.codable(forKey: "credentials")
+passwordValidator.firstError(for: "weak")
+// .invalid(reason: "Must be at least 8 characters")
 
-// Check existence and clean up
-try keychain.contains("authToken")  // true
-try keychain.remove(forKey: "authToken")
-try keychain.removeAll()
+// Numeric range validation
+let ageRule = ValidationRule<Int>.range(18...120, message: "Invalid age")
+ageRule.validate(25)  // .valid
+
+// Custom predicate
+let even = ValidationRule<Int>.predicate("Must be even") { $0 % 2 == 0 }
 ```
 
 ---
@@ -51,7 +53,7 @@ Each utility is an independent library — import only what you need:
 | `SwiftUtilsNetworking` | `import SwiftUtilsNetworking` | APIClient, request/response helpers |
 | `SwiftUtilsStorage` | `import SwiftUtilsStorage` | UserDefaults property wrapper, Keychain wrapper |
 | `SwiftUtilsConcurrency` | `import SwiftUtilsConcurrency` | Debouncer, Throttler, async helpers |
-| `SwiftUtilsHelpers` | `import SwiftUtilsHelpers` | Logger with pluggable destinations |
+| `SwiftUtilsHelpers` | `import SwiftUtilsHelpers` | Logger, Validator |
 | `SwiftUtils` | `import SwiftUtils` | Everything (umbrella) |
 
 In your `Package.swift`:
@@ -97,21 +99,42 @@ dependencies: [
 
 **SwiftLogger** — A configurable, thread-safe logger with severity levels (verbose through fatal), category tagging, and pluggable destinations. Ships with a `ConsoleDestination` that uses `os.Logger` in release builds and `print` in debug. Messages below the configured minimum level are discarded, and `@autoclosure` ensures expensive string interpolations are never evaluated when filtered out.
 
+**Validator** — A composable, type-safe input validation framework. Build validators by chaining rules like `.nonEmpty()`, `.email()`, `.minLength(_:)`, `.strongPassword()`, `.pattern(_:)`, or custom predicates. Validate a value against all rules at once with `errors(for:)`, or short-circuit on the first failure with `firstError(for:)`. Includes built-in rules for strings, `Comparable` types (min/max/range), and optionals (`required`).
+
 ## Structure
 
 ```
-Sources/
-├── Extensions/       # SwiftUtilsExtensions
-├── Networking/       # SwiftUtilsNetworking
-├── Storage/          # SwiftUtilsStorage
-├── Concurrency/      # SwiftUtilsConcurrency
-└── Helpers/          # SwiftUtilsHelpers
-Tests/
-├── ExtensionsTests/
-├── NetworkingTests/
-├── StorageTests/
-├── ConcurrencyTests/
-└── HelpersTests/
+swift-utils/
+├── Package.swift
+├── README.md
+├── Sources/
+│   ├── Concurrency/
+│   │   └── DebounceThrottle.swift
+│   ├── Extensions/
+│   │   ├── Date+Extensions.swift
+│   │   └── String+Extensions.swift
+│   ├── Helpers/
+│   │   ├── Logger.swift
+│   │   └── Validator.swift
+│   ├── Networking/
+│   │   └── APIClient.swift
+│   └── Storage/
+│       ├── KeychainWrapper.swift
+│       └── UserDefaultsWrapper.swift
+└── Tests/
+    ├── ConcurrencyTests/
+    │   └── DebounceThrottleTests.swift
+    ├── ExtensionsTests/
+    │   ├── DateExtensionsTests.swift
+    │   └── StringExtensionsTests.swift
+    ├── HelpersTests/
+    │   ├── LoggerTests.swift
+    │   └── ValidatorTests.swift
+    ├── NetworkingTests/
+    │   └── APIClientTests.swift
+    └── StorageTests/
+        ├── KeychainWrapperTests.swift
+        └── UserDefaultsWrapperTests.swift
 ```
 
 ## License
