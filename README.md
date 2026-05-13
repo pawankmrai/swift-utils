@@ -4,35 +4,44 @@ A growing collection of reusable Swift utilities for iOS development. A new util
 
 ## Latest Addition
 
-### Validator (Helpers)
+### DeepLinkHandler (Helpers)
 
-A composable, type-safe input validation framework. Chain multiple rules to validate form fields, API parameters, or any user input — collect all errors at once or short-circuit on the first failure.
+A composable deep link routing system for iOS apps. Register URL patterns with named parameters and wildcards, then route incoming URLs to the appropriate handlers with full context (path params, query params, scheme).
 
 ```swift
 import SwiftUtilsHelpers
 
-// Build a reusable email validator
-let emailValidator = Validator<String>()
-    .adding(.nonEmpty(message: "Email is required"))
-    .adding(.email())
+let router = DeepLinkHandler()
 
-emailValidator.isValid("user@example.com")  // true
-emailValidator.errors(for: "bad")           // ["Must be a valid email address"]
+// Register routes with named path parameters
+router.register("product/:id") { context in
+    let productId = context.pathParameters["id"]!
+    let source = context.queryParameters["ref"] ?? "organic"
+    // Navigate to product detail
+}
 
-// Password strength check
-let passwordValidator = Validator<String>()
-    .adding(.minLength(8))
-    .adding(.strongPassword())
+router.register("user/:userId/posts/:postId") { context in
+    let userId = context.pathParameters["userId"]!
+    let postId = context.pathParameters["postId"]!
+    // Navigate to specific post
+}
 
-passwordValidator.firstError(for: "weak")
-// .invalid(reason: "Must be at least 8 characters")
+// Wildcard support
+router.register("feed/*/comments") { _ in
+    // Matches feed/anything/comments
+}
 
-// Numeric range validation
-let ageRule = ValidationRule<Int>.range(18...120, message: "Invalid age")
-ageRule.validate(25)  // .valid
+// Fallback for unmatched URLs
+router.setFallback { context in
+    // Handle unknown deep links
+}
 
-// Custom predicate
-let even = ValidationRule<Int>.predicate("Must be even") { $0 % 2 == 0 }
+// Handle incoming URL (e.g., from UIApplicationDelegate or SceneDelegate)
+let url = URL(string: "myapp://product/42?ref=push")!
+router.handle(url) // → matched, id="42", ref="push"
+
+// Check without executing
+router.canHandle(url) // → true
 ```
 
 ---
@@ -53,7 +62,7 @@ Each utility is an independent library — import only what you need:
 | `SwiftUtilsNetworking` | `import SwiftUtilsNetworking` | APIClient, request/response helpers |
 | `SwiftUtilsStorage` | `import SwiftUtilsStorage` | UserDefaults property wrapper, Keychain wrapper |
 | `SwiftUtilsConcurrency` | `import SwiftUtilsConcurrency` | Debouncer, Throttler, async helpers |
-| `SwiftUtilsHelpers` | `import SwiftUtilsHelpers` | Logger, Validator |
+| `SwiftUtilsHelpers` | `import SwiftUtilsHelpers` | Logger, Validator, DeepLinkHandler |
 | `SwiftUtils` | `import SwiftUtils` | Everything (umbrella) |
 
 In your `Package.swift`:
@@ -101,6 +110,8 @@ dependencies: [
 
 **Validator** — A composable, type-safe input validation framework. Build validators by chaining rules like `.nonEmpty()`, `.email()`, `.minLength(_:)`, `.strongPassword()`, `.pattern(_:)`, or custom predicates. Validate a value against all rules at once with `errors(for:)`, or short-circuit on the first failure with `firstError(for:)`. Includes built-in rules for strings, `Comparable` types (min/max/range), and optionals (`required`).
 
+**DeepLinkHandler** — A declarative deep link routing system. Register URL patterns with named parameters (`:id`) and wildcards (`*`), then route incoming URLs to handlers with full context including extracted path parameters, query parameters, and scheme. Supports scheme filtering, fallback handlers, and dry-run matching via `canHandle(_:)`. Case-insensitive literal matching and first-match-wins priority.
+
 ## Structure
 
 ```
@@ -114,6 +125,7 @@ swift-utils/
 │   │   ├── Date+Extensions.swift
 │   │   └── String+Extensions.swift
 │   ├── Helpers/
+│   │   ├── DeepLinkHandler.swift
 │   │   ├── Logger.swift
 │   │   └── Validator.swift
 │   ├── Networking/
@@ -128,6 +140,7 @@ swift-utils/
     │   ├── DateExtensionsTests.swift
     │   └── StringExtensionsTests.swift
     ├── HelpersTests/
+    │   ├── DeepLinkHandlerTests.swift
     │   ├── LoggerTests.swift
     │   └── ValidatorTests.swift
     ├── NetworkingTests/
