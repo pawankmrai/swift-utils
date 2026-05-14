@@ -4,44 +4,39 @@ A growing collection of reusable Swift utilities for iOS development. A new util
 
 ## Latest Addition
 
-### DeepLinkHandler (Helpers)
+### Array+Extensions (Extensions)
 
-A composable deep link routing system for iOS apps. Register URL patterns with named parameters and wildcards, then route incoming URLs to the appropriate handlers with full context (path params, query params, scheme).
+A comprehensive set of Array and Sequence extensions for everyday iOS development. Includes safe subscripting, chunking, deduplication (by equality, hash, or key path), grouping, frequency counting, key-path-based sorting/min/max, and conditional appending.
 
 ```swift
-import SwiftUtilsHelpers
+import SwiftUtilsExtensions
 
-let router = DeepLinkHandler()
+// Safe subscript — no more "Index out of range" crashes
+let items = ["a", "b", "c"]
+items[safe: 1]   // Optional("b")
+items[safe: 99]  // nil
 
-// Register routes with named path parameters
-router.register("product/:id") { context in
-    let productId = context.pathParameters["id"]!
-    let source = context.queryParameters["ref"] ?? "organic"
-    // Navigate to product detail
-}
+// Chunk arrays for batch processing or grid layouts
+[1, 2, 3, 4, 5].chunked(into: 2)  // [[1, 2], [3, 4], [5]]
 
-router.register("user/:userId/posts/:postId") { context in
-    let userId = context.pathParameters["userId"]!
-    let postId = context.pathParameters["postId"]!
-    // Navigate to specific post
-}
+// Remove duplicates while preserving order
+[1, 3, 2, 3, 1, 4].uniquedFast()  // [1, 3, 2, 4]
 
-// Wildcard support
-router.register("feed/*/comments") { _ in
-    // Matches feed/anything/comments
-}
+// Deduplicate by a property
+struct User { let id: Int; let name: String }
+users.uniqued(by: \.id)
 
-// Fallback for unmatched URLs
-router.setFallback { context in
-    // Handle unknown deep links
-}
+// Sort by key path
+users.sorted(by: \.name)
+users.sorted(by: \.name, ascending: false)
 
-// Handle incoming URL (e.g., from UIApplicationDelegate or SceneDelegate)
-let url = URL(string: "myapp://product/42?ref=push")!
-router.handle(url) // → matched, id="42", ref="push"
+// Element frequencies
+["a", "b", "a", "c", "a"].frequencies()  // ["a": 3, "b": 1, "c": 1]
 
-// Check without executing
-router.canHandle(url) // → true
+// Conditional append
+var tags = ["swift", "ios"]
+tags.appendIfAbsent("swift")  // no-op, returns false
+tags.appendIfAbsent("macOS")  // appends, returns true
 ```
 
 ---
@@ -58,7 +53,7 @@ Each utility is an independent library — import only what you need:
 
 | Library | Import | What's inside |
 |---------|--------|---------------|
-| `SwiftUtilsExtensions` | `import SwiftUtilsExtensions` | String, Date extensions |
+| `SwiftUtilsExtensions` | `import SwiftUtilsExtensions` | String, Date, Array extensions |
 | `SwiftUtilsNetworking` | `import SwiftUtilsNetworking` | APIClient, request/response helpers |
 | `SwiftUtilsStorage` | `import SwiftUtilsStorage` | UserDefaults property wrapper, Keychain wrapper |
 | `SwiftUtilsConcurrency` | `import SwiftUtilsConcurrency` | Debouncer, Throttler, async helpers |
@@ -89,6 +84,8 @@ dependencies: [
 **String+Extensions** — Common string helpers including email validation, trimming, numeric checks, truncation, slugification, and camelCase-to-snake_case conversion.
 
 **Date+Extensions** — Comprehensive date utilities with relative formatting, component access, date arithmetic, ISO 8601 parsing, and day-level comparisons (isToday, isYesterday, etc.).
+
+**Array+Extensions** — Safe subscripting (`[safe:]`), chunking, deduplication (preserving order via `uniqued()`, `uniquedFast()`, or `uniqued(by:)` for key paths), grouping by key path, frequency counting, key-path-based `min`/`max`/`sorted`, `compactMap(unwrapping:)` for optional key paths, and `appendIfAbsent(_:)`.
 
 ### Networking
 
@@ -122,6 +119,7 @@ swift-utils/
 │   ├── Concurrency/
 │   │   └── DebounceThrottle.swift
 │   ├── Extensions/
+│   │   ├── Array+Extensions.swift
 │   │   ├── Date+Extensions.swift
 │   │   └── String+Extensions.swift
 │   ├── Helpers/
@@ -137,6 +135,7 @@ swift-utils/
     ├── ConcurrencyTests/
     │   └── DebounceThrottleTests.swift
     ├── ExtensionsTests/
+    │   ├── ArrayExtensionsTests.swift
     │   ├── DateExtensionsTests.swift
     │   └── StringExtensionsTests.swift
     ├── HelpersTests/
