@@ -11,6 +11,7 @@ let package = Package(
         .library(name: "SwiftUtilsStorage", targets: ["SwiftUtilsStorage"]),
         .library(name: "SwiftUtilsConcurrency", targets: ["SwiftUtilsConcurrency"]),
         .library(name: "SwiftUtilsHelpers", targets: ["SwiftUtilsHelpers"]),
+        .library(name: "SwiftUtilsUIUtilities", targets: ["SwiftUtilsUIUtilities"]),
 
         // Umbrella library — includes everything
         .library(name: "SwiftUtils", targets: [
@@ -19,6 +20,7 @@ let package = Package(
             "SwiftUtilsStorage",
             "SwiftUtilsConcurrency",
             "SwiftUtilsHelpers",
+            "SwiftUtilsUIUtilities",
         ]),
     ],
     targets: [
@@ -28,6 +30,7 @@ let package = Package(
         .target(name: "SwiftUtilsStorage", path: "Sources/Storage"),
         .target(name: "SwiftUtilsConcurrency", path: "Sources/Concurrency"),
         .target(name: "SwiftUtilsHelpers", path: "Sources/Helpers"),
+        .target(name: "SwiftUtilsUIUtilities", path: "Sources/UIUtilities"),
 
         // Test targets
         .testTarget(name: "SwiftUtilsExtensionsTests", dependencies: ["SwiftUtilsExtensions"], path: "Tests/ExtensionsTests"),
@@ -35,5 +38,6 @@ let package = Package(
         .testTarget(name: "SwiftUtilsStorageTests", dependencies: ["SwiftUtilsStorage"], path: "Tests/StorageTests"),
         .testTarget(name: "SwiftUtilsConcurrencyTests", dependencies: ["SwiftUtilsConcurrency"], path: "Tests/ConcurrencyTests"),
         .testTarget(name: "SwiftUtilsHelpersTests", dependencies: ["SwiftUtilsHelpers"], path: "Tests/HelpersTests"),
+        .testTarget(name: "SwiftUtilsUIUtilitiesTests", dependencies: ["SwiftUtilsUIUtilities"], path: "Tests/UIUtilitiesTests"),
     ]
 )

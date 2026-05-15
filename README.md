@@ -4,39 +4,40 @@ A growing collection of reusable Swift utilities for iOS development. A new util
 
 ## Latest Addition
 
-### Array+Extensions (Extensions)
+### GradientBuilder (UI Utilities)
 
-A comprehensive set of Array and Sequence extensions for everyday iOS development. Includes safe subscripting, chunking, deduplication (by equality, hash, or key path), grouping, frequency counting, key-path-based sorting/min/max, and conditional appending.
+A declarative, chainable gradient builder for UIKit. Create linear and radial `CAGradientLayer` instances, render gradients to `UIImage`, or apply them directly to views. Includes preset gradients for common visual styles.
 
 ```swift
-import SwiftUtilsExtensions
+import SwiftUtilsUIUtilities
 
-// Safe subscript — no more "Index out of range" crashes
-let items = ["a", "b", "c"]
-items[safe: 1]   // Optional("b")
-items[safe: 99]  // nil
+// Build a custom gradient with chaining
+let gradientLayer = GradientBuilder()
+    .add(color: .systemBlue, at: 0)
+    .add(color: .systemPurple, at: 0.5)
+    .add(color: .systemPink, at: 1)
+    .direction(.topLeftToBottomRight)
+    .cornerRadius(16)
+    .build(in: view.bounds)
 
-// Chunk arrays for batch processing or grid layouts
-[1, 2, 3, 4, 5].chunked(into: 2)  // [[1, 2], [3, 4], [5]]
+// Apply directly to a view
+view.applyGradient(
+    GradientBuilder()
+        .add(color: .systemIndigo, at: 0)
+        .add(color: .systemTeal, at: 1)
+        .direction(.leftToRight)
+)
 
-// Remove duplicates while preserving order
-[1, 3, 2, 3, 1, 4].uniquedFast()  // [1, 3, 2, 4]
+// Use presets
+let sunset = GradientBuilder.sunset.build(in: headerView.bounds)
+let ocean  = GradientBuilder.ocean.renderImage(size: CGSize(width: 300, height: 200))
 
-// Deduplicate by a property
-struct User { let id: Int; let name: String }
-users.uniqued(by: \.id)
-
-// Sort by key path
-users.sorted(by: \.name)
-users.sorted(by: \.name, ascending: false)
-
-// Element frequencies
-["a", "b", "a", "c", "a"].frequencies()  // ["a": 3, "b": 1, "c": 1]
-
-// Conditional append
-var tags = ["swift", "ios"]
-tags.appendIfAbsent("swift")  // no-op, returns false
-tags.appendIfAbsent("macOS")  // appends, returns true
+// Radial gradient
+let radial = GradientBuilder()
+    .add(color: .white, at: 0)
+    .add(color: .black, at: 1)
+    .radial(center: CGPoint(x: 0.5, y: 0.5), radius: 0.5)
+    .build(in: view.bounds)
 ```
 
 ---
@@ -58,6 +59,7 @@ Each utility is an independent library — import only what you need:
 | `SwiftUtilsStorage` | `import SwiftUtilsStorage` | UserDefaults property wrapper, Keychain wrapper |
 | `SwiftUtilsConcurrency` | `import SwiftUtilsConcurrency` | Debouncer, Throttler, async helpers |
 | `SwiftUtilsHelpers` | `import SwiftUtilsHelpers` | Logger, Validator, DeepLinkHandler |
+| `SwiftUtilsUIUtilities` | `import SwiftUtilsUIUtilities` | GradientBuilder, gradient presets, UIView extensions |
 | `SwiftUtils` | `import SwiftUtils` | Everything (umbrella) |
 
 In your `Package.swift`:
@@ -72,7 +74,7 @@ dependencies: [
     name: "MyApp",
     dependencies: [
         .product(name: "SwiftUtilsNetworking", package: "swift-utils"),
-        .product(name: "SwiftUtilsStorage", package: "swift-utils"),
+        .product(name: "SwiftUtilsUIUtilities", package: "swift-utils"),
     ]
 )
 ```
@@ -109,6 +111,10 @@ dependencies: [
 
 **DeepLinkHandler** — A declarative deep link routing system. Register URL patterns with named parameters (`:id`) and wildcards (`*`), then route incoming URLs to handlers with full context including extracted path parameters, query parameters, and scheme. Supports scheme filtering, fallback handlers, and dry-run matching via `canHandle(_:)`. Case-insensitive literal matching and first-match-wins priority.
 
+### UI Utilities
+
+**GradientBuilder** — A declarative, chainable builder for creating `CAGradientLayer` instances. Supports linear gradients with 8 predefined directions (plus custom), radial gradients, configurable corner radii, and rendering to `UIImage`. Includes a `UIView.applyGradient(_:)` extension for one-liner background gradients, plus preset gradients (`.sunset`, `.ocean`, `.forest`, `.nightSky`). Stops are automatically sorted by location.
+
 ## Structure
 
 ```
@@ -128,9 +134,11 @@ swift-utils/
 │   │   └── Validator.swift
 │   ├── Networking/
 │   │   └── APIClient.swift
-│   └── Storage/
-│       ├── KeychainWrapper.swift
-│       └── UserDefaultsWrapper.swift
+│   ├── Storage/
+│   │   ├── KeychainWrapper.swift
+│   │   └── UserDefaultsWrapper.swift
+│   └── UIUtilities/
+│       └── GradientBuilder.swift
 └── Tests/
     ├── ConcurrencyTests/
     │   └── DebounceThrottleTests.swift
@@ -144,9 +152,11 @@ swift-utils/
     │   └── ValidatorTests.swift
     ├── NetworkingTests/
     │   └── APIClientTests.swift
-    └── StorageTests/
-        ├── KeychainWrapperTests.swift
-        └── UserDefaultsWrapperTests.swift
+    ├── StorageTests/
+    │   ├── KeychainWrapperTests.swift
+    │   └── UserDefaultsWrapperTests.swift
+    └── UIUtilitiesTests/
+        └── GradientBuilderTests.swift
 ```
 
 ## License
