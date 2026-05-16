@@ -4,40 +4,37 @@ A growing collection of reusable Swift utilities for iOS development. A new util
 
 ## Latest Addition
 
-### GradientBuilder (UI Utilities)
+### FeatureFlagManager (Helpers)
 
-A declarative, chainable gradient builder for UIKit. Create linear and radial `CAGradientLayer` instances, render gradients to `UIImage`, or apply them directly to views. Includes preset gradients for common visual styles.
+A lightweight, type-safe feature flag manager with layered value resolution, local overrides, and change observation. Define flags as static constants, read them anywhere, and override them for testing or debug menus. Plug in remote providers (Firebase, LaunchDarkly, etc.) via the `FeatureFlagProvider` protocol.
 
 ```swift
-import SwiftUtilsUIUtilities
+import SwiftUtilsHelpers
 
-// Build a custom gradient with chaining
-let gradientLayer = GradientBuilder()
-    .add(color: .systemBlue, at: 0)
-    .add(color: .systemPurple, at: 0.5)
-    .add(color: .systemPink, at: 1)
-    .direction(.topLeftToBottomRight)
-    .cornerRadius(16)
-    .build(in: view.bounds)
+// Define flags
+extension FeatureFlag {
+    static let newOnboarding = FeatureFlag<Bool>(key: "new_onboarding", defaultValue: false)
+    static let maxRetries = FeatureFlag<Int>(key: "max_retries", defaultValue: 3)
+}
 
-// Apply directly to a view
-view.applyGradient(
-    GradientBuilder()
-        .add(color: .systemIndigo, at: 0)
-        .add(color: .systemTeal, at: 1)
-        .direction(.leftToRight)
-)
+let manager = FeatureFlagManager.shared
 
-// Use presets
-let sunset = GradientBuilder.sunset.build(in: headerView.bounds)
-let ocean  = GradientBuilder.ocean.renderImage(size: CGSize(width: 300, height: 200))
+// Read a flag
+if manager.isEnabled(.newOnboarding) {
+    showNewOnboarding()
+}
 
-// Radial gradient
-let radial = GradientBuilder()
-    .add(color: .white, at: 0)
-    .add(color: .black, at: 1)
-    .radial(center: CGPoint(x: 0.5, y: 0.5), radius: 0.5)
-    .build(in: view.bounds)
+// Set a local override (great for debug menus)
+manager.setOverride(true, for: .newOnboarding)
+
+// Observe changes
+let token = manager.observe(.newOnboarding) { change in
+    print("Changed: \(change.oldValue) → \(change.newValue)")
+}
+
+// Register a remote provider
+let remoteFlags = DictionaryFlagProvider(values: ["max_retries": 5])
+manager.registerProvider(remoteFlags)
 ```
 
 ---
@@ -58,7 +55,7 @@ Each utility is an independent library — import only what you need:
 | `SwiftUtilsNetworking` | `import SwiftUtilsNetworking` | APIClient, request/response helpers |
 | `SwiftUtilsStorage` | `import SwiftUtilsStorage` | UserDefaults property wrapper, Keychain wrapper |
 | `SwiftUtilsConcurrency` | `import SwiftUtilsConcurrency` | Debouncer, Throttler, async helpers |
-| `SwiftUtilsHelpers` | `import SwiftUtilsHelpers` | Logger, Validator, DeepLinkHandler |
+| `SwiftUtilsHelpers` | `import SwiftUtilsHelpers` | Logger, Validator, DeepLinkHandler, FeatureFlagManager |
 | `SwiftUtilsUIUtilities` | `import SwiftUtilsUIUtilities` | GradientBuilder, gradient presets, UIView extensions |
 | `SwiftUtils` | `import SwiftUtils` | Everything (umbrella) |
 
@@ -74,7 +71,7 @@ dependencies: [
     name: "MyApp",
     dependencies: [
         .product(name: "SwiftUtilsNetworking", package: "swift-utils"),
-        .product(name: "SwiftUtilsUIUtilities", package: "swift-utils"),
+        .product(name: "SwiftUtilsHelpers", package: "swift-utils"),
     ]
 )
 ```
@@ -111,6 +108,8 @@ dependencies: [
 
 **DeepLinkHandler** — A declarative deep link routing system. Register URL patterns with named parameters (`:id`) and wildcards (`*`), then route incoming URLs to handlers with full context including extracted path parameters, query parameters, and scheme. Supports scheme filtering, fallback handlers, and dry-run matching via `canHandle(_:)`. Case-insensitive literal matching and first-match-wins priority.
 
+**FeatureFlagManager** — A lightweight, type-safe feature flag system. Define flags as `FeatureFlag<Value>` constants with keys and default values. The manager resolves values through layered lookup: local overrides → registered providers → defaults. Supports change observation with auto-cancelling tokens, a `DictionaryFlagProvider` for testing, and thread-safe concurrent reads with barrier writes. Integrate with remote config services by implementing the `FeatureFlagProvider` protocol.
+
 ### UI Utilities
 
 **GradientBuilder** — A declarative, chainable builder for creating `CAGradientLayer` instances. Supports linear gradients with 8 predefined directions (plus custom), radial gradients, configurable corner radii, and rendering to `UIImage`. Includes a `UIView.applyGradient(_:)` extension for one-liner background gradients, plus preset gradients (`.sunset`, `.ocean`, `.forest`, `.nightSky`). Stops are automatically sorted by location.
@@ -130,6 +129,7 @@ swift-utils/
 │   │   └── String+Extensions.swift
 │   ├── Helpers/
 │   │   ├── DeepLinkHandler.swift
+│   │   ├── FeatureFlagManager.swift
 │   │   ├── Logger.swift
 │   │   └── Validator.swift
 │   ├── Networking/
@@ -148,6 +148,7 @@ swift-utils/
     │   └── StringExtensionsTests.swift
     ├── HelpersTests/
     │   ├── DeepLinkHandlerTests.swift
+    │   ├── FeatureFlagManagerTests.swift
     │   ├── LoggerTests.swift
     │   └── ValidatorTests.swift
     ├── NetworkingTests/
