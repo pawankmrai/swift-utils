@@ -44,6 +44,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | DeepLinkHandler | Helpers | Declarative URL routing with path params and wildcards | [Examples & API](Sources/Helpers/DeepLinkHandler.md) |
 | FeatureFlagManager | Helpers | Type-safe feature flags with overrides and observation | [Examples & API](Sources/Helpers/FeatureFlagManager.md) |
 | GradientBuilder | UI Utilities | Chainable gradient builder with presets and UIImage rendering | [Examples & API](Sources/UIUtilities/GradientBuilder.md) |
+| Optional+Extensions | Extensions | Unwrapping, chaining, filtering, zipping, and typed defaults for optionals | [Examples & API](Sources/Extensions/Optional+Extensions.md) |
 
 ## License
 
