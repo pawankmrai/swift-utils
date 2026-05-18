@@ -46,6 +46,8 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | GradientBuilder | UI Utilities | Chainable gradient builder with presets and UIImage rendering | [Examples & API](Sources/UIUtilities/GradientBuilder.md) |
 | Optional+Extensions | Extensions | Unwrapping, chaining, filtering, zipping, and typed defaults for optionals | [Examples & API](Sources/Extensions/Optional+Extensions.md) |
 
+| NotificationScheduler | Helpers | Fluent local notification scheduling with time, calendar, and recurring triggers | [Examples & API](Sources/Helpers/NotificationScheduler.md) |
+
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
