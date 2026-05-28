@@ -49,6 +49,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | HapticFeedbackManager | Helpers | Thread-safe haptic feedback with patterns, presets, and custom intensity | [Examples & API](Sources/Helpers/HapticFeedbackManager.md) |
 | DisplayFormatter | Helpers | Number, currency, percentage, file size, duration, ordinal, and compact formatting | [Examples & API](Sources/Helpers/Formatter.md) |
 | Color+Extensions | Extensions | Hex init, RGBA/HSBA extraction, lighten/darken, blend, contrast ratio, WCAG checks | [Examples & API](Sources/Extensions/Color+Extensions.md) |
+| Data+Extensions | Extensions | Hex encoding, URL-safe Base64, SHA-256/MD5 hashing, UTF-8 conversion, JSON pretty-print, compression | [Examples & API](Sources/Extensions/Data+Extensions.md) |
 
 ## License
 
