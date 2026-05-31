@@ -51,6 +51,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | Color+Extensions | Extensions | Hex init, RGBA/HSBA extraction, lighten/darken, blend, contrast ratio, WCAG checks | [Examples & API](Sources/Extensions/Color+Extensions.md) |
 | Data+Extensions | Extensions | Hex encoding, URL-safe Base64, SHA-256/MD5 hashing, UTF-8 conversion, JSON pretty-print, compression | [Examples & API](Sources/Extensions/Data+Extensions.md) |
 | NetworkRetrier | Networking | Configurable retry with exponential backoff, jitter, and preset policies | [Examples & API](Sources/Networking/NetworkRetrier.md) |
+| Int+Extensions | Extensions | Clamping, digits, ordinals, Roman numerals, time intervals, parity, byte formatting, math | [Examples & API](Sources/Extensions/Int+Extensions.md) |
 
 ## License
 
