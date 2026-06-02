@@ -53,6 +53,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | NetworkRetrier | Networking | Configurable retry with exponential backoff, jitter, and preset policies | [Examples & API](Sources/Networking/NetworkRetrier.md) |
 | Int+Extensions | Extensions | Clamping, digits, ordinals, Roman numerals, time intervals, parity, byte formatting, math | [Examples & API](Sources/Extensions/Int+Extensions.md) |
 | URL+Extensions | Extensions | Query params, path helpers, deep links, secure check, file type detection, URL masking | [Examples & API](Sources/Extensions/URL+Extensions.md) |
+| Collection+Extensions | Extensions | Safe access, partitioning, sum/average, key-path aggregation, inspection helpers | [Examples & API](Sources/Extensions/Collection+Extensions.md) |
 
 ## License
 
