@@ -56,6 +56,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | Collection+Extensions | Extensions | Safe access, partitioning, sum/average, key-path aggregation, inspection helpers | [Examples & API](Sources/Extensions/Collection+Extensions.md) |
 | AnimationUtilities | UI Utilities | Declarative chainable animations with presets, sequences, and UIView convenience extensions | [Examples & API](Sources/UIUtilities/AnimationUtilities.md) |
 | AppVersionChecker | Helpers | Compare installed vs App Store version using iTunes Lookup API; returns upToDate, updateAvailable, or aheadOfStore | [Examples & API](Sources/Helpers/AppVersionChecker.md) |
+| FileManagerHelper | Storage | Type-safe file read/write/move/copy/delete across Documents, Caches, tmp, and custom sandbox directories | [Examples & API](Sources/Storage/FileManagerHelper.md) |
 
 ## License
 
