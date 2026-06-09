@@ -57,6 +57,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | AnimationUtilities | UI Utilities | Declarative chainable animations with presets, sequences, and UIView convenience extensions | [Examples & API](Sources/UIUtilities/AnimationUtilities.md) |
 | AppVersionChecker | Helpers | Compare installed vs App Store version using iTunes Lookup API; returns upToDate, updateAvailable, or aheadOfStore | [Examples & API](Sources/Helpers/AppVersionChecker.md) |
 | FileManagerHelper | Storage | Type-safe file read/write/move/copy/delete across Documents, Caches, tmp, and custom sandbox directories | [Examples & API](Sources/Storage/FileManagerHelper.md) |
+| AsyncTaskQueue | Concurrency | Actor-based queue with configurable concurrency limit, result forwarding, and pending cancellation | [Examples & API](Sources/Concurrency/AsyncTaskQueue.md) |
 
 ## License
 
