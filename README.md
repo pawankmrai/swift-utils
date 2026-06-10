@@ -59,6 +59,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | FileManagerHelper | Storage | Type-safe file read/write/move/copy/delete across Documents, Caches, tmp, and custom sandbox directories | [Examples & API](Sources/Storage/FileManagerHelper.md) |
 | AsyncTaskQueue | Concurrency | Actor-based queue with configurable concurrency limit, result forwarding, and pending cancellation | [Examples & API](Sources/Concurrency/AsyncTaskQueue.md) |
 
+| AnalyticsTracker | Helpers | Protocol-based analytics tracker with global properties, user identity, session tracking, and multi-backend fan-out | [Examples & API](Sources/Helpers/AnalyticsTracker.md) |
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
