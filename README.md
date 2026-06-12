@@ -60,6 +60,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | AsyncTaskQueue | Concurrency | Actor-based queue with configurable concurrency limit, result forwarding, and pending cancellation | [Examples & API](Sources/Concurrency/AsyncTaskQueue.md) |
 
 | AnalyticsTracker | Helpers | Protocol-based analytics tracker with global properties, user identity, session tracking, and multi-backend fan-out | [Examples & API](Sources/Helpers/AnalyticsTracker.md) |
+| RequestBuilder | Networking | Fluent chainable URLRequest builder with method, headers, query params, JSON body, timeout, and direct execute/decode | [Examples & API](Sources/Networking/RequestBuilder.md) |
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
