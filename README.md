@@ -62,6 +62,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | AnalyticsTracker | Helpers | Protocol-based analytics tracker with global properties, user identity, session tracking, and multi-backend fan-out | [Examples & API](Sources/Helpers/AnalyticsTracker.md) |
 | RequestBuilder | Networking | Fluent chainable URLRequest builder with method, headers, query params, JSON body, timeout, and direct execute/decode | [Examples & API](Sources/Networking/RequestBuilder.md) |
 | NetworkMonitor | Networking | Async/await + Combine network connectivity monitor with interface detection and timeout support | [Examples & API](Sources/Networking/NetworkMonitor.md) |
+| ResponseCache | Networking | Actor-based response cache with in-memory + disk persistence, TTL expiration, and get-or-fetch | [Examples & API](Sources/Networking/ResponseCache.md) |
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
