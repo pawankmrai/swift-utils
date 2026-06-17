@@ -58,11 +58,12 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | AppVersionChecker | Helpers | Compare installed vs App Store version using iTunes Lookup API; returns upToDate, updateAvailable, or aheadOfStore | [Examples & API](Sources/Helpers/AppVersionChecker.md) |
 | FileManagerHelper | Storage | Type-safe file read/write/move/copy/delete across Documents, Caches, tmp, and custom sandbox directories | [Examples & API](Sources/Storage/FileManagerHelper.md) |
 | AsyncTaskQueue | Concurrency | Actor-based queue with configurable concurrency limit, result forwarding, and pending cancellation | [Examples & API](Sources/Concurrency/AsyncTaskQueue.md) |
-
 | AnalyticsTracker | Helpers | Protocol-based analytics tracker with global properties, user identity, session tracking, and multi-backend fan-out | [Examples & API](Sources/Helpers/AnalyticsTracker.md) |
 | RequestBuilder | Networking | Fluent chainable URLRequest builder with method, headers, query params, JSON body, timeout, and direct execute/decode | [Examples & API](Sources/Networking/RequestBuilder.md) |
 | NetworkMonitor | Networking | Async/await + Combine network connectivity monitor with interface detection and timeout support | [Examples & API](Sources/Networking/NetworkMonitor.md) |
 | ResponseCache | Networking | Actor-based response cache with in-memory + disk persistence, TTL expiration, and get-or-fetch | [Examples & API](Sources/Networking/ResponseCache.md) |
+| LayoutHelpers | UI Utilities | Chainable Auto Layout builder for pinning edges, centering, sizing, aspect ratio, and dimension matching | [Examples & API](Sources/UIUtilities/LayoutHelpers.md) |
+
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
