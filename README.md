@@ -64,6 +64,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | ResponseCache | Networking | Actor-based response cache with in-memory + disk persistence, TTL expiration, and get-or-fetch | [Examples & API](Sources/Networking/ResponseCache.md) |
 | LayoutHelpers | UI Utilities | Chainable Auto Layout builder for pinning edges, centering, sizing, aspect ratio, and dimension matching | [Examples & API](Sources/UIUtilities/LayoutHelpers.md) |
 | CoreDataStack | Storage | Generic Core Data stack with typed fetch/save/delete, async background tasks, batch delete, and in-memory mode for tests/previews | [Examples & API](Sources/Storage/CoreDataStack.md) |
+| TaskBag | Concurrency | Combine-style cancellation bag for structured-concurrency `Task`s, with auto-removal on completion and cancel-on-deinit | [Examples & API](Sources/Concurrency/TaskBag.md) |
 
 ## License
 
