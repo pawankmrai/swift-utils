@@ -65,6 +65,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | LayoutHelpers | UI Utilities | Chainable Auto Layout builder for pinning edges, centering, sizing, aspect ratio, and dimension matching | [Examples & API](Sources/UIUtilities/LayoutHelpers.md) |
 | CoreDataStack | Storage | Generic Core Data stack with typed fetch/save/delete, async background tasks, batch delete, and in-memory mode for tests/previews | [Examples & API](Sources/Storage/CoreDataStack.md) |
 | TaskBag | Concurrency | Combine-style cancellation bag for structured-concurrency `Task`s, with auto-removal on completion and cancel-on-deinit | [Examples & API](Sources/Concurrency/TaskBag.md) |
+| BiometricAuthManager | Helpers | Async/await Face ID, Touch ID, and Optic ID authentication with typed errors and device-passcode fallback | [Examples & API](Sources/Helpers/BiometricAuthManager.md) |
 
 ## License
 
