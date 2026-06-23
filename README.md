@@ -66,6 +66,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | CoreDataStack | Storage | Generic Core Data stack with typed fetch/save/delete, async background tasks, batch delete, and in-memory mode for tests/previews | [Examples & API](Sources/Storage/CoreDataStack.md) |
 | TaskBag | Concurrency | Combine-style cancellation bag for structured-concurrency `Task`s, with auto-removal on completion and cancel-on-deinit | [Examples & API](Sources/Concurrency/TaskBag.md) |
 | BiometricAuthManager | Helpers | Async/await Face ID, Touch ID, and Optic ID authentication with typed errors and device-passcode fallback | [Examples & API](Sources/Helpers/BiometricAuthManager.md) |
+| PermissionManager | Helpers | Async/await wrapper for camera, microphone, photo library, contacts, and location permissions with unified status checks | [Examples & API](Sources/Helpers/PermissionManager.md) |
 
 ## License
 
