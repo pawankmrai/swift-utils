@@ -67,6 +67,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | TaskBag | Concurrency | Combine-style cancellation bag for structured-concurrency `Task`s, with auto-removal on completion and cancel-on-deinit | [Examples & API](Sources/Concurrency/TaskBag.md) |
 | BiometricAuthManager | Helpers | Async/await Face ID, Touch ID, and Optic ID authentication with typed errors and device-passcode fallback | [Examples & API](Sources/Helpers/BiometricAuthManager.md) |
 | PermissionManager | Helpers | Async/await wrapper for camera, microphone, photo library, contacts, and location permissions with unified status checks | [Examples & API](Sources/Helpers/PermissionManager.md) |
+| AsyncTimeout | Concurrency | Race an async throwing operation against a timer with `withTimeout`, default-value fallback, and nil-on-timeout variants | [Examples & API](Sources/Concurrency/AsyncTimeout.md) |
 
 ## License
 
