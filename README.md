@@ -69,6 +69,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | PermissionManager | Helpers | Async/await wrapper for camera, microphone, photo library, contacts, and location permissions with unified status checks | [Examples & API](Sources/Helpers/PermissionManager.md) |
 | AsyncTimeout | Concurrency | Race an async throwing operation against a timer with `withTimeout`, default-value fallback, and nil-on-timeout variants | [Examples & API](Sources/Concurrency/AsyncTimeout.md) |
 | ConcurrentMap | Concurrency | `TaskGroup`-backed concurrent `map`/`forEach`/`compactMap` over sequences with concurrency limits, plus a first-to-finish `ConcurrentRace` helper | [Examples & API](Sources/Concurrency/ConcurrentMap.md) |
+| ImageLoader | Networking | Actor-based remote image loader with memory/disk caching, request de-duplication, cancellation, and a cell-reuse-safe UIImageView extension | [Examples & API](Sources/Networking/ImageLoader.md) |
 
 ## License
 
