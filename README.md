@@ -71,6 +71,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | ConcurrentMap | Concurrency | `TaskGroup`-backed concurrent `map`/`forEach`/`compactMap` over sequences with concurrency limits, plus a first-to-finish `ConcurrentRace` helper | [Examples & API](Sources/Concurrency/ConcurrentMap.md) |
 | ImageLoader | Networking | Actor-based remote image loader with memory/disk caching, request de-duplication, cancellation, and a cell-reuse-safe UIImageView extension | [Examples & API](Sources/Networking/ImageLoader.md) |
 | MultipartFormDataBuilder | Networking | RFC 7578 multipart/form-data builder for file uploads, with JSON parts, disk-backed files, and a URLRequest convenience | [Examples & API](Sources/Networking/MultipartFormDataBuilder.md) |
+| CodableStore | Storage | Thread-safe, disk-backed JSON store for `Codable & Identifiable` models with O(1) lookup, predicate queries, batch upsert, and atomic writes | [Examples & API](Sources/Storage/CodableStore.md) |
 
 ## License
 
