@@ -74,6 +74,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | CodableStore | Storage | Thread-safe, disk-backed JSON store for `Codable & Identifiable` models with O(1) lookup, predicate queries, batch upsert, and atomic writes | [Examples & API](Sources/Storage/CodableStore.md) |
 | AsyncSemaphore | Concurrency | Non-thread-blocking counting semaphore for async/await with FIFO ordering, cancellation, and a scoped `withPermit` helper to cap concurrency | [Examples & API](Sources/Concurrency/AsyncSemaphore.md) |
 | ToastPresenter | UI Utilities | Queue-based toast/banner presenter with styles, auto-dismiss, tap and swipe to dismiss | [Examples & API](Sources/UIUtilities/ToastPresenter.md) |
+| KeyboardObserver | UI Utilities | Combine/async observer for keyboard height, visibility, and animation timing, with UIScrollView inset adjustment and SwiftUI `.keyboardAdaptive()` modifier | [Examples & API](Sources/UIUtilities/KeyboardObserver.md) |
 
 ## License
 
