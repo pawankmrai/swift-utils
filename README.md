@@ -76,6 +76,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | ToastPresenter | UI Utilities | Queue-based toast/banner presenter with styles, auto-dismiss, tap and swipe to dismiss | [Examples & API](Sources/UIUtilities/ToastPresenter.md) |
 | KeyboardObserver | UI Utilities | Combine/async observer for keyboard height, visibility, and animation timing, with UIScrollView inset adjustment and SwiftUI `.keyboardAdaptive()` modifier | [Examples & API](Sources/UIUtilities/KeyboardObserver.md) |
 | PasteboardManager | Helpers | Type-safe UIPasteboard wrapper with expiring items, local-only copies, and change observation | [Examples & API](Sources/Helpers/PasteboardManager.md) |
+| ReviewPromptManager | Helpers | Throttled App Store review prompts based on significant events, install age, cooldown, and per-version limits | [Examples & API](Sources/Helpers/ReviewPromptManager.md) |
 
 ## License
 
