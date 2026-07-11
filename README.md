@@ -79,6 +79,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | PasteboardManager | Helpers | Type-safe UIPasteboard wrapper with expiring items, local-only copies, and change observation | [Examples & API](Sources/Helpers/PasteboardManager.md) |
 | ReviewPromptManager | Helpers | Throttled App Store review prompts based on significant events, install age, cooldown, and per-version limits | [Examples & API](Sources/Helpers/ReviewPromptManager.md) |
 | SingleFlight | Concurrency | Actor-based single-flight coordinator that deduplicates concurrent async calls sharing a key, joining callers to one in-flight task | [Examples & API](Sources/Concurrency/SingleFlight.md) |
+| ShimmerLoadingView | UI Utilities | Animated shimmer/skeleton placeholder — UIKit `UIView` plus a SwiftUI `.shimmering(isActive:)` modifier for loading states | [Examples & API](Sources/UIUtilities/ShimmerLoadingView.md) |
 
 ## License
 
