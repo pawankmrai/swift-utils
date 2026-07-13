@@ -36,6 +36,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | Array+Extensions | Extensions | Safe subscript, chunking, dedup, grouping, frequencies, key-path sort | [Examples & API](Sources/Extensions/Array+Extensions.md) |
 | Date+Extensions | Extensions | Relative formatting, components, arithmetic, ISO 8601, day comparisons | [Examples & API](Sources/Extensions/Date+Extensions.md) |
 | APIClient | Networking | Async/await HTTP client with auto JSON coding | [Examples & API](Sources/Networking/APIClient.md) |
+| WebSocketClient | Networking | Async/await WebSocket client with AsyncStream events, auto-reconnect backoff, and keep-alive pings | [Examples & API](Sources/Networking/WebSocketClient.md) |
 | UserDefaultsWrapper | Storage | @propertyWrapper for type-safe UserDefaults | [Examples & API](Sources/Storage/UserDefaultsWrapper.md) |
 | KeychainWrapper | Storage | Type-safe Keychain for strings, Data, and Codable | [Examples & API](Sources/Storage/KeychainWrapper.md) |
 | DebounceThrottle | Concurrency | Thread-safe debouncer and throttler | [Examples & API](Sources/Concurrency/DebounceThrottle.md) |
