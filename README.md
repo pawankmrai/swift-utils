@@ -84,6 +84,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | LocationProvider | Helpers | Async/await + AsyncStream wrapper around CoreLocation for one-shot location fixes and continuous updates, with typed errors and timeout support | [Examples & API](Sources/Helpers/LocationProvider.md) |
 | AsyncRateLimiter | Concurrency | Actor-based token-bucket rate limiter with continuous refill, burst capacity, non-blocking `tryAcquire`, and cancellable `acquire` | [Examples & API](Sources/Concurrency/AsyncRateLimiter.md) |
 | QRCodeGenerator | Helpers | Core Image-backed QR code generator for text/URLs/data, with error-correction levels, UIKit recoloring, and a Wi-Fi payload builder | [Examples & API](Sources/Helpers/QRCodeGenerator.md) |
+| CloudKeyValueStore | Storage | iCloud key-value sync via `@CloudStorage`/`@CloudCodableStorage` property wrappers, with cross-device change observation | [Examples & API](Sources/Storage/CloudKeyValueStore.md) |
 
 ## License
 
