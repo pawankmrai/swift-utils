@@ -87,6 +87,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | CloudKeyValueStore | Storage | iCloud key-value sync via `@CloudStorage`/`@CloudCodableStorage` property wrappers, with cross-device change observation | [Examples & API](Sources/Storage/CloudKeyValueStore.md) |
 | SSEClient | Networking | Async/await Server-Sent Events client with SSE wire-format parsing, Last-Event-ID resumption, and exponential-backoff auto-reconnect | [Examples & API](Sources/Networking/SSEClient.md) |
 | ShareSheetPresenter | Helpers | Typed `UIActivityViewController` wrapper with iPad popover anchoring, bar-button anchoring, activity exclusion, and completion handling | [Examples & API](Sources/Helpers/ShareSheetPresenter.md) |
+| LRUCache | Storage | Actor-based generic in-memory LRU cache with capacity eviction, optional per-entry TTL, and recency-ordered snapshots | [Examples & API](Sources/Storage/LRUCache.md) |
 
 ## License
 
