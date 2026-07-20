@@ -88,6 +88,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | SSEClient | Networking | Async/await Server-Sent Events client with SSE wire-format parsing, Last-Event-ID resumption, and exponential-backoff auto-reconnect | [Examples & API](Sources/Networking/SSEClient.md) |
 | ShareSheetPresenter | Helpers | Typed `UIActivityViewController` wrapper with iPad popover anchoring, bar-button anchoring, activity exclusion, and completion handling | [Examples & API](Sources/Helpers/ShareSheetPresenter.md) |
 | LRUCache | Storage | Actor-based generic in-memory LRU cache with capacity eviction, optional per-entry TTL, and recency-ordered snapshots | [Examples & API](Sources/Storage/LRUCache.md) |
+| PushNotificationManager | Helpers | Remote push registration, hex device-token capture, `AsyncStream` token updates, and category-based payload routing | [Examples & API](Sources/Helpers/PushNotificationManager.md) |
 
 ## License
 
