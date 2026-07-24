@@ -91,6 +91,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | PushNotificationManager | Helpers | Remote push registration, hex device-token capture, `AsyncStream` token updates, and category-based payload routing | [Examples & API](Sources/Helpers/PushNotificationManager.md) |
 | ImageProcessor | UI Utilities | Resize, crop, round, tint, and JPEG-compress `UIImage`s, plus ImageIO-backed downsampling for memory-efficient thumbnails | [Examples & API](Sources/UIUtilities/ImageProcessor.md) |
 | DownloadManager | Networking | Actor-based file downloader with request de-duplication, bounded concurrent transfers, and `AsyncThrowingStream` progress | [Examples & API](Sources/Networking/DownloadManager.md) |
+| AuthTokenRefresher | Networking | Actor-based OAuth token cache with single-flight refresh de-duplication, expiry leeway, and transparent 401-triggered retry | [Examples & API](Sources/Networking/AuthTokenRefresher.md) |
 
 ## License
 
