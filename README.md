@@ -93,6 +93,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | DownloadManager | Networking | Actor-based file downloader with request de-duplication, bounded concurrent transfers, and `AsyncThrowingStream` progress | [Examples & API](Sources/Networking/DownloadManager.md) |
 | AuthTokenRefresher | Networking | Actor-based OAuth token cache with single-flight refresh de-duplication, expiry leeway, and transparent 401-triggered retry | [Examples & API](Sources/Networking/AuthTokenRefresher.md) |
 | AsyncSequence+Combining | Concurrency | Free `merge`, `combineLatest`, and `zip` operators for `AsyncSequence`, with error propagation and cooperative cancellation | [Examples & API](Sources/Concurrency/AsyncSequence+Combining.md) |
+| AsyncBatcher | Concurrency | Coalesces individual async calls into batched handler invocations by size or time window, with per-item result matching and manual flush/cancel | [Examples & API](Sources/Concurrency/AsyncBatcher.md) |
 
 ## License
 
