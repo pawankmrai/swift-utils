@@ -94,6 +94,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | AuthTokenRefresher | Networking | Actor-based OAuth token cache with single-flight refresh de-duplication, expiry leeway, and transparent 401-triggered retry | [Examples & API](Sources/Networking/AuthTokenRefresher.md) |
 | AsyncSequence+Combining | Concurrency | Free `merge`, `combineLatest`, and `zip` operators for `AsyncSequence`, with error propagation and cooperative cancellation | [Examples & API](Sources/Concurrency/AsyncSequence+Combining.md) |
 | AsyncBatcher | Concurrency | Coalesces individual async calls into batched handler invocations by size or time window, with per-item result matching and manual flush/cancel | [Examples & API](Sources/Concurrency/AsyncBatcher.md) |
+| PDFGenerator | UI Utilities | Chainable, auto-paginating PDF builder for text, attributed text, and images via `UIGraphicsPDFRenderer` and Core Text page-flow | [Examples & API](Sources/UIUtilities/PDFGenerator.md) |
 
 ## License
 
