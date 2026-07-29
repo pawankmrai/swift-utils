@@ -95,6 +95,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | AsyncSequence+Combining | Concurrency | Free `merge`, `combineLatest`, and `zip` operators for `AsyncSequence`, with error propagation and cooperative cancellation | [Examples & API](Sources/Concurrency/AsyncSequence+Combining.md) |
 | AsyncBatcher | Concurrency | Coalesces individual async calls into batched handler invocations by size or time window, with per-item result matching and manual flush/cancel | [Examples & API](Sources/Concurrency/AsyncBatcher.md) |
 | PDFGenerator | UI Utilities | Chainable, auto-paginating PDF builder for text, attributed text, and images via `UIGraphicsPDFRenderer` and Core Text page-flow | [Examples & API](Sources/UIUtilities/PDFGenerator.md) |
+| BackgroundTaskManager | Helpers | Thread-safe `BGTaskScheduler` wrapper for app-refresh and processing tasks, with closure-based registration and an in-memory run-history log | [Examples & API](Sources/Helpers/BackgroundTaskManager.md) |
 
 ## License
 
