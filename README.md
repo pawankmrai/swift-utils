@@ -97,6 +97,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | PDFGenerator | UI Utilities | Chainable, auto-paginating PDF builder for text, attributed text, and images via `UIGraphicsPDFRenderer` and Core Text page-flow | [Examples & API](Sources/UIUtilities/PDFGenerator.md) |
 | BackgroundTaskManager | Helpers | Thread-safe `BGTaskScheduler` wrapper for app-refresh and processing tasks, with closure-based registration and an in-memory run-history log | [Examples & API](Sources/Helpers/BackgroundTaskManager.md) |
 | LaunchArgumentsParser | Helpers | Type-safe `ProcessInfo` launch-argument/environment parser for UI-testing and debug flags, with a matching test-side `XCUIApplication` config builder | [Examples & API](Sources/Helpers/LaunchArgumentsParser.md) |
+| ActorIsolated | Concurrency | Generic actor-backed box for safe concurrent access to any value, with atomic update/withValue, compare-and-set, and numeric add helpers | [Examples & API](Sources/Concurrency/ActorIsolated.md) |
 
 ## License
 
