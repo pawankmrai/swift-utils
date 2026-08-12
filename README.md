@@ -99,6 +99,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | LaunchArgumentsParser | Helpers | Type-safe `ProcessInfo` launch-argument/environment parser for UI-testing and debug flags, with a matching test-side `XCUIApplication` config builder | [Examples & API](Sources/Helpers/LaunchArgumentsParser.md) |
 | ActorIsolated | Concurrency | Generic actor-backed box for safe concurrent access to any value, with atomic update/withValue, compare-and-set, and numeric add helpers | [Examples & API](Sources/Concurrency/ActorIsolated.md) |
 | CertificatePinner | Networking | SSL/TLS certificate pinning via SHA-256 digests, with a pure testable validation core and a `URLSessionDelegate` for live TLS enforcement | [Examples & API](Sources/Networking/CertificatePinner.md) |
+| APIErrorMapper | Networking | Maps HTTP responses into typed errors — decodes RFC 7807 Problem Details or custom error bodies, with client/server/transport distinction | [Examples & API](Sources/Networking/APIErrorMapper.md) |
 
 ## License
 
