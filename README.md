@@ -102,6 +102,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | APIErrorMapper | Networking | Maps HTTP responses into typed errors — decodes RFC 7807 Problem Details or custom error bodies, with client/server/transport distinction | [Examples & API](Sources/Networking/APIErrorMapper.md) |
 | EncryptedFileStore | Storage | AES-GCM encrypted `Codable` persistence with Keychain-backed keys, tamper detection, hashed file names, and file protection | [Examples & API](Sources/Storage/EncryptedFileStore.md) |
 | CircuitBreaker | Networking | Actor-based circuit breaker (closed/open/half-open) that fails fast on a failing dependency, with configurable thresholds, error filtering, and state observers | [Examples & API](Sources/Networking/CircuitBreaker.md) |
+| AsyncBroadcaster | Concurrency | Multicast `AsyncStream` channel that fans each element out to many independent subscribers, with replay of recent values, per-subscriber buffering, and auto-cleanup on cancellation | [Examples & API](Sources/Concurrency/AsyncBroadcaster.md) |
 
 ## License
 
