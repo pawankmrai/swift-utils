@@ -106,6 +106,7 @@ Import only what you need: `SwiftUtilsExtensions`, `SwiftUtilsNetworking`, `Swif
 | MigrationRunner | Storage | Actor-based versioned one-time data migrations with ordered steps, per-step version commits, failure resume, and a fresh-install skip policy | [Examples & API](Sources/Storage/MigrationRunner.md) |
 | JSONValue | Networking | Type-safe `Codable` enum for arbitrary JSON with literal syntax, typed accessors, dot-path lookup, deep merge, and model bridging | [Examples & API](Sources/Networking/JSONValue.md) |
 | StateMachine | Helpers | Thread-safe generic finite state machine with declarative routes, wildcard routes, guard conditions, enter/exit/transition hooks, and bounded history | [Examples & API](Sources/Helpers/StateMachine.md) |
+| UndoHistory | Helpers | Thread-safe snapshot-based undo/redo for any value type, with named actions, keystroke-style coalescing, bounded depth, and unsaved-changes tracking | [Examples & API](Sources/Helpers/UndoHistory.md) |
 
 ## License
 
